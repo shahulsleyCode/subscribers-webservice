@@ -3,16 +3,21 @@ package com.shahul.project.subscribers.user;
 import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public class User {
 
-    @NotEmpty(message = "Please provide a name")
-    private String userId;
-    @NotEmpty(message = "Please provide a name")
-    private String name;
-    private String accountType;
-    private LocalDateTime insertTimeStamp;
-    private LocalDateTime validUptoTimeStamp;
+    @Size(min = 7, message = "userId should be 7 character Only")
+    @Size(max = 7, message = "userId should be 7 character Only")
+    private final String userId;
+
+    @Size(min = 2, message = "User name should be at least 2 characters")
+    @Size(max = 2, message = "User name should be at least 2 characters")
+    private final String name;
+    
+    private final String accountType;
+    private final LocalDateTime insertTimeStamp;
+    private final LocalDateTime validUptoTimeStamp;
 
     public User(String userId, String name, String accountType, LocalDateTime insertTimeStamp, LocalDateTime validUptoTimeStamp) {
         this.userId = userId;
